@@ -2,6 +2,7 @@
 Find Folder
 
 URL:
+
     https://github.com/khanrahan/find-folder
 
 Description:
@@ -23,13 +24,17 @@ To Install:
     /opt/Autodesk/user/<user name>/python
 """
 
-
 from __future__ import print_function
 from PySide2 import QtWidgets, QtCore
 import flame
 import os
 
-VERSION = (1, 0, 0)
+__title__ = "Find Folder"
+__version_info__ = (1, 0, 1)
+__version__ = ".".join([str(num) for num in __version_info__])
+__version_title__ = "{} v{}".format(__title__, __version__)
+
+MESSAGE_PREFIX = "[PYTHON HOOK]"
 
 class FlameButton(QtWidgets.QPushButton):
     """
@@ -210,6 +215,9 @@ class FindFolder(object):
     def __init__(self, selection):
         """Ensure that only 1 folder is selected by the artist."""
 
+        self.message(__version_title__)
+        self.message("Script called from {}".format(__file__))
+
         if len(selection) < 2:
             self.src_path = selection[0].path
 
@@ -230,6 +238,13 @@ class FindFolder(object):
 
         qt_app_instance = QtWidgets.QApplication.instance()
         qt_app_instance.clipboard().setText(text)
+
+
+    @staticmethod
+    def message(string):
+        """Print message to shell window and append global MESSAGE_PREFIX."""
+
+        print(" ".join([MESSAGE_PREFIX, string]))
 
 
     def get_folders(self):
@@ -261,9 +276,10 @@ class FindFolder(object):
             try:
                 # function below not introduced until flame 2021.2
                 flame.mediahub.files.set_path(self.dest_path)
+                self.message("MediaHub Files path changed to {}".format(self.dest_path))
             except AttributeError:
                 self.copy_to_clipboard(self.dest_path)
-                print("Find Folder - {} sent to clipboard".format(self.dest_path))
+                self.message("{} sent to clipboard".format(self.dest_path))
 
         def filter_list():
             """
@@ -281,8 +297,7 @@ class FindFolder(object):
 
         self.window.setMinimumSize(600, 600)
         self.window.setStyleSheet('background-color: #272727')
-        self.window.setWindowTitle("Find Folder v{}".format(
-                                   ".".join(str(num) for num in VERSION)))
+        self.window.setWindowTitle(__version_title__)
 
         # FlameLineEdit class needs this
         self.window.setFocusPolicy(QtCore.Qt.StrongFocus)
@@ -311,7 +326,7 @@ class FindFolder(object):
 
         # Buttons
         self.ok_btn = FlameButton('Ok', okay_button, self.window)
-        self.ok_btn.setAutoDefault(True) # doesnt make Enter key work
+        self.ok_btn.setAutoDefault(True)  # doesnt make Enter key work
         self.ok_btn.setStyleSheet('background: #732020')
 
         self.cancel_btn = FlameButton("Cancel", self.window.close, self.window)
