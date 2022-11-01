@@ -30,7 +30,7 @@ import flame
 import os
 
 __title__ = "Find Folder"
-__version_info__ = (1, 0, 1)
+__version_info__ = (1, 0, 2)
 __version__ = ".".join([str(num) for num in __version_info__])
 __version_title__ = "{} v{}".format(__title__, __version__)
 
@@ -326,8 +326,8 @@ class FindFolder(object):
 
         # Buttons
         self.ok_btn = FlameButton('Ok', okay_button, self.window)
-        self.ok_btn.setAutoDefault(True)  # doesnt make Enter key work
         self.ok_btn.setStyleSheet('background: #732020')
+        self.ok_btn.setShortcut('Return')
 
         self.cancel_btn = FlameButton("Cancel", self.window.close, self.window)
 
