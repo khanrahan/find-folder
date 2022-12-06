@@ -1,6 +1,6 @@
 # Find Folder
 
-Plugin for Autodesk Flame software.
+Plugin for [Autodesk Flame](http://www.autodesk.com/products/flame)
 
 Filter subdirectories of the current directory in Media Hub Files.  Useful when a directory contains a *LARGE* number of subdirectories.
 
@@ -10,7 +10,7 @@ To make available to all users on the workstation, copy `find-folder.py` to `/op
 For specific users, copy to `/opt/Autodesk/user/<user name>/python`
 
 ## Menus
- - Right-click selected folder in Media Hub Files `->` Find... `->` Find Folder
+ - Right-click selected folder in Media Hub Files -> `Find...` -> `Find Folder`
 
 ## Acknowledgments
-UI Templates from [Logik-Portal/qt-snippets](https://github.com/logik-portal/qt_snippets)
+UI Templates courtesy of [pyflame.com](http://www.pyflame.com)
