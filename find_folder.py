@@ -30,7 +30,7 @@ import flame
 import os
 
 __title__ = "Find Folder"
-__version_info__ = (1, 0, 2)
+__version_info__ = (1, 0, 3)
 __version__ = ".".join([str(num) for num in __version_info__])
 __version_title__ = "{} v{}".format(__title__, __version__)
 
@@ -52,22 +52,27 @@ class FlameButton(QtWidgets.QPushButton):
         self.setMaximumSize(QtCore.QSize(110, 28))
         self.setFocusPolicy(QtCore.Qt.NoFocus)
         self.clicked.connect(do_when_pressed)
-        self.setStyleSheet("""QPushButton {color: #9a9a9a;
-                                           background-color: #424142;
-                                           border-top: 1px inset #555555;
-                                           border-bottom: 1px inset black;
-                                           font: 14px 'Discreet'}
-                           QPushButton:pressed {color: #d9d9d9;
-                                                background-color: #4f4f4f;
-                                                border-top: 1px inset #666666;
-                                                font: italic}
-                           QPushButton:disabled {color: #747474;
-                                                 background-color: #353535;
-                                                 border-top: 1px solid #444444;
-                                                 border-bottom: 1px solid #242424}
-                           QToolTip {color: black;
-                                     background-color: #ffffde;
-                                     border: black solid 1px}""")
+        self.setStyleSheet("""
+            QPushButton {
+                color: #9a9a9a;
+                background-color: #424142;
+                border-top: 1px inset #555555;
+                border-bottom: 1px inset black;
+                font: 14px 'Discreet'}
+            QPushButton:pressed {
+                color: #d9d9d9;
+                background-color: #4f4f4f;
+                border-top: 1px inset #666666;
+                font: italic}
+            QPushButton:disabled {
+                color: #747474;
+                background-color: #353535;
+                border-top: 1px solid #444444;
+                border-bottom: 1px solid #242424}
+            QToolTip {
+                color: black;
+                background-color: #ffffde;
+                border: black solid 1px}""")
 
 
 class FlameLabel(QtWidgets.QLabel):
@@ -90,23 +95,32 @@ class FlameLabel(QtWidgets.QLabel):
         # Set label stylesheet based on label_type
 
         if label_type == 'normal':
-            self.setStyleSheet("""QLabel {color: #9a9a9a;
-                                          border-bottom: 1px inset #282828;
-                                          font: 14px 'Discreet'}
-                                  QLabel:disabled {color: #6a6a6a}""")
+            self.setStyleSheet("""
+                QLabel {
+                    color: #9a9a9a;
+                    border-bottom: 1px inset #282828;
+                    font: 14px 'Discreet'}
+                QLabel:disabled {
+                    color: #6a6a6a}""")
         elif label_type == 'background':
             self.setAlignment(QtCore.Qt.AlignCenter)
-            self.setStyleSheet("""QLabel {color: #9a9a9a;
-                                          background-color: #393939;
-                                          font: 14px 'Discreet'}
-                                  QLabel:disabled {color: #6a6a6a}""")
+            self.setStyleSheet("""
+                QLabel {
+                    color: #9a9a9a;
+                    background-color: #393939;
+                    font: 14px 'Discreet'}
+                QLabel:disabled {
+                    color: #6a6a6a}""")
         elif label_type == 'outline':
             self.setAlignment(QtCore.Qt.AlignCenter)
-            self.setStyleSheet("""QLabel {color: #9a9a9a;
-                                          background-color: #212121;
-                                          border: 1px solid #404040;
-                                          font: 14px 'Discreet'}
-                                  QLabel:disabled {color: #6a6a6a}""")
+            self.setStyleSheet("""
+                QLabel {
+                    color: #9a9a9a;
+                    background-color: #212121;
+                    border: 1px solid #404040;
+                    font: 14px 'Discreet'}
+                QLabel:disabled {
+                    color: #6a6a6a}""")
 
 
 class FlameLineEdit(QtWidgets.QLineEdit):
@@ -125,17 +139,22 @@ class FlameLineEdit(QtWidgets.QLineEdit):
         self.setMinimumHeight(28)
         self.setMinimumWidth(110)
         # self.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.setStyleSheet("""QLineEdit {color: #9a9a9a;
-                                         background-color: #373e47;
-                                         selection-color: #262626;
-                                         selection-background-color: #b8b1a7;
-                                         font: 14px 'Discreet'}
-                              QLineEdit:focus {background-color: #474e58}
-                              QLineEdit:disabled {color: #6a6a6a;
-                                                  background-color: #373737}
-                              QToolTip {color: black;
-                                        background-color: #ffffde;
-                                        border: black solid 1px}""")
+        self.setStyleSheet("""
+            QLineEdit {
+                color: #9a9a9a;
+                background-color: #373e47;
+                selection-color: #262626;
+                selection-background-color: #b8b1a7;
+                font: 14px 'Discreet'}
+            QLineEdit:focus {
+                background-color: #474e58}
+            QLineEdit:disabled {
+                color: #6a6a6a;
+                background-color: #373737}
+            QToolTip {
+                color: black;
+                background-color: #ffffde;
+                border: black solid 1px}""")
 
 
 class FlameListWidget(QtWidgets.QListWidget):
@@ -157,13 +176,15 @@ class FlameListWidget(QtWidgets.QListWidget):
         self.setAlternatingRowColors(True)
         self.setUniformItemSizes(True)
         self.setStyleSheet("""
-                           QListWidget {color: #9a9a9a;
-                                        background-color: #2a2a2a;
-                                        alternate-background-color: #2d2d2d;
-                                        outline: none;
-                                        font: 14px "Discreet"}
-                           QListWidget::item:selected {color: #d9d9d9;
-                                            background-color: #474747}""")
+            QListWidget {
+                color: #9a9a9a;
+                background-color: #2a2a2a;
+                alternate-background-color: #2d2d2d;
+                outline: none;
+                font: 14px "Discreet"}
+            QListWidget::item:selected {
+                color: #d9d9d9;
+                background-color: #474747}""")
 
 
 class FlameMessageBox(QtWidgets.QMessageBox):
@@ -187,19 +208,23 @@ class FlameMessageBox(QtWidgets.QMessageBox):
         self.button.setFocusPolicy(QtCore.Qt.NoFocus)
         self.button.setMinimumSize(QtCore.QSize(80, 28))
         self.setStyleSheet("""
-                           QMessageBox {background-color: #313131;
-                                        font: 14px "Discreet"}
-                           QLabel {color: #9a9a9a;
-                                   font: 14px "Discreet"}
-                           QPushButton {color: #9a9a9a;
-                                        background-color: #732020;
-                                        border-top: 1px inset #555555;
-                                        border-bottom: 1px inset black;
-                                        font: 14px "Discreet"}
-                           QPushButton:pressed {color: #d9d9d9;
-                                                background-color: #4f4f4f;
-                                                border-top: 1px inset #666666;
-                                                font: italic}""")
+            MessageBox {
+                background-color: #313131;
+                font: 14px "Discreet"}
+            QLabel {
+                color: #9a9a9a;
+                font: 14px "Discreet"}
+            QPushButton {
+                color: #9a9a9a;
+                background-color: #732020;
+                border-top: 1px inset #555555;
+                border-bottom: 1px inset black;
+                font: 14px "Discreet"}
+            QPushButton:pressed {
+                color: #d9d9d9;
+                background-color: #4f4f4f;
+                border-top: 1px inset #666666;
+                font: italic}""")
 
 
 class FindFolder(object):
