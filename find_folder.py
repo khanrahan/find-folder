@@ -227,7 +227,7 @@ class FlameMessageBox(QtWidgets.QMessageBox):
                 font: italic}""")
 
 
-class FindFolder(object):
+class FindFolder:
     """
     Searches a folder for a subdirectory that matches the search terms.
 
