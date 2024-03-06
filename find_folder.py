@@ -470,4 +470,5 @@ def get_mediahub_files_custom_ui_actions():
              'actions': [{'name': 'Find Folder',
                           'isVisible': scope_folders,
                           'execute': FindFolder,
-                          'minimumVersion': '2022'}]}]
+                          'minimumVersion': '2022',
+                          'maximumVersion': '2024.9.9.9'}]}]
