@@ -371,11 +371,9 @@ class FindFolder:
 
 def scope_folders(selection):
     """Determine if selection is a folder in the Media Hub > Files tab."""
+    valid_objects = (flame.PyMediaHubFilesFolder)
 
-    for item in selection:
-        if "FilesFolder" in str(item):
-            return True
-    return False
+    return all(isinstance(item, valid_objects) for item in selection)
 
 
 def get_mediahub_files_custom_ui_actions():
