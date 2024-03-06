@@ -35,7 +35,7 @@ from PySide2 import QtCore, QtWidgets
 TITLE = 'Find Folder'
 VERSION_INFO = (2, 0, 0)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
-TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
+TITLE_VERSION = f'{TITLE} v{VERSION}'
 MESSAGE_PREFIX = '[PYTHON]'
 
 
@@ -335,7 +335,7 @@ class FindFolder:
     def __init__(self, selection):
         """Ensure that only 1 folder is selected by the artist."""
         self.message(TITLE_VERSION)
-        self.message('Script called from {}'.format(__file__))
+        self.message(f'Script called from {__file__}')
 
         if len(selection) < 2:
             self.src_path = selection[0].path
@@ -395,6 +395,9 @@ class FindFolder:
         self.window.setMinimumSize(600, 600)
         self.window.setStyleSheet('background-color: #272727')
         self.window.setWindowTitle(TITLE_VERSION)
+
+        # Mac needs this to close the window
+        self.window.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
         # FlameLineEdit class needs this
         self.window.setFocusPolicy(QtCore.Qt.StrongFocus)
