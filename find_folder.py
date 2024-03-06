@@ -311,8 +311,9 @@ class FindFolder:
         # Center Window
         resolution = QtWidgets.QDesktopWidget().screenGeometry()
 
-        self.window.move((resolution.width() / 2) - (self.window.frameSize().width() / 2),
-                         (resolution.height() / 2) - (self.window.frameSize().height() / 2))
+        self.window.move(
+                (resolution.width() / 2) - (self.window.frameSize().width() / 2),
+                (resolution.height() / 2) - (self.window.frameSize().height() / 2))
 
         # Label
         self.find_label = FlameLabel("Find", "normal", self.window)
