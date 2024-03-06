@@ -228,13 +228,10 @@ class FlameMessageBox(QtWidgets.QMessageBox):
 
 
 class FindFolder:
-    """
-    Searches a folder for a subdirectory that matches the search terms.
+    """Searches for a subdirectory.
 
-    On Flame 2021.2 and above, it will navigate in Media Hub to the selection.
-
-    On Flame 2021.1 and below, it will copy the selected subdirectory's path
-    to the clipboard for the artist to paste in the Media Hub path bar.
+    Find matching subdirectories based on a search string, then navigate to the
+    destination subdirectory the artist chooses.
     """
 
     def __init__(self, selection):
@@ -269,18 +266,15 @@ class FindFolder:
 
         root, dirs, files = next(walker)
 
-        results = [d for d in dirs if not d[0] == "."] # results unsorted
+        results = [d for d in dirs if d[0] != "."]  # results unsorted
 
         return results
 
     def main_window(self):
-        """
-        UI window for artists to enter search terms, view results, then confirm
-        the selection.
-        """
+        """Enter search terms, view results, then confirm the selection."""
+
         def okay_button():
             """Close window and process the artist's selected subdirectory."""
-
             self.window.close()
 
             self.dest_folder = self.list_scroll.selectedItems()[0].text()
@@ -290,9 +284,7 @@ class FindFolder:
             flame.mediahub.files.set_path(self.dest_path)
 
         def filter_list():
-            """
-            Updates the results list when anything is typed in the Find bar.
-            """
+            """Updates the results list when anything is typed in the Find bar."""
             for num in range(self.list_scroll.count()):
                 if self.find.text() in self.list_scroll.item(num).text():
                     self.list_scroll.item(num).setHidden(False)
