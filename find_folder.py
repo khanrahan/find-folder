@@ -2,13 +2,13 @@
 Script Name: Find Folder
 Written By: Kieran Hanrahan
 
-Script Version: 2.0.0
+Script Version: 2.1.0
 Flame Version: 2022
 
 URL: http://github.com/khanrahan/find-folder
 
 Creation Date: 07.22.22
-Update Date: 03.06.24
+Update Date: 03.07.24
 
 Description:
 
@@ -38,7 +38,7 @@ from PySide2 import QtCore, QtWidgets
 
 
 TITLE = 'Find Folder'
-VERSION_INFO = (2, 0, 0)
+VERSION_INFO = (2, 1, 0)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
 TITLE_VERSION = f'{TITLE} v{VERSION}'
 MESSAGE_PREFIX = '[PYTHON]'
@@ -342,18 +342,12 @@ class FindFolder:
         self.message(TITLE_VERSION)
         self.message(f'Script called from {__file__}')
 
-        if len(selection) < 2:
-            self.src_path = selection[0].path
+        self.src_path = selection[0].path
 
-            self.dest_folder = ''
-            self.dest_path = ''
+        self.dest_folder = ''
+        self.dest_path = ''
 
-            self.main_window()
-        else:
-            msg = FlameMessageBox()
-            msg.setText('Please select only 1 folder.')
-            msg.setWindowTitle('Error')
-            msg.exec_()
+        self.main_window()
 
     @staticmethod
     def message(string):
@@ -475,7 +469,7 @@ def scope_folders(selection):
     """Determine if selection is a folder in the Media Hub > Files tab."""
     valid_objects = (flame.PyMediaHubFilesFolder)
 
-    return all(isinstance(item, valid_objects) for item in selection)
+    return (len(selection) == 1 and isinstance(selection[0], valid_objects))
 
 
 def get_mediahub_files_custom_ui_actions():
