@@ -30,7 +30,7 @@ import flame
 import os
 
 __title__ = "Find Folder"
-__version_info__ = (1, 0, 3)
+__version_info__ = (2, 0, 0)
 __version__ = ".".join([str(num) for num in __version_info__])
 __version_title__ = "{} v{}".format(__title__, __version__)
 
