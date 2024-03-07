@@ -256,11 +256,9 @@ class FindFolder(object):
             msg.setWindowTitle("Error")
             msg.exec_()
 
-
     @staticmethod
     def copy_to_clipboard(text):
         """Self explanitory.  Only takes a string."""
-
         qt_app_instance = QtWidgets.QApplication.instance()
         qt_app_instance.clipboard().setText(text)
 
@@ -274,7 +272,6 @@ class FindFolder(object):
 
     def get_folders(self):
         """Return all subdirectories in a folder."""
-
         walker = os.walk(self.src_path)
 
         root, dirs, files = next(walker)
@@ -283,13 +280,11 @@ class FindFolder(object):
 
         return results
 
-
     def main_window(self):
         """
         UI window for artists to enter search terms, view results, then confirm
         the selection.
         """
-
         def okay_button():
             """Close window and process the artist's selected subdirectory."""
 
@@ -310,13 +305,11 @@ class FindFolder(object):
             """
             Updates the results list when anything is typed in the Find bar.
             """
-
             for num in range(self.list_scroll.count()):
                 if self.find.text() in self.list_scroll.item(num).text():
                     self.list_scroll.item(num).setHidden(False)
                 else:
                     self.list_scroll.item(num).setHidden(True)
-
 
         self.window = QtWidgets.QWidget()
 
