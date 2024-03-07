@@ -265,6 +265,8 @@ class FindFolder:
         walker = os.walk(self.src_path)
 
         root, dirs, files = next(walker)
+        del root
+        del files
 
         results = [d for d in dirs if d[0] != '.']  # results unsorted
 
@@ -325,6 +327,7 @@ class FindFolder:
 
         # Buttons
         self.ok_btn = FlameButton('Ok', okay_button, self.window)
+        self.ok_btn.setAutoDefault(True)  # doesnt make Enter key work
         self.ok_btn.setStyleSheet('background: #732020')
         self.ok_btn.setShortcut('Return')
 
