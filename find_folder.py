@@ -156,37 +156,47 @@ class FlameLabel(QtWidgets.QLabel):
 
 
 class FlameLineEdit(QtWidgets.QLineEdit):
-    """
-    Custom Qt Flame Line Edit Widget
-    Main window should include this: window.setFocusPolicy(QtCore.Qt.StrongFocus)
-    To use:
-    line_edit = FlameLineEdit('Some text here', window)
-    """
+    '''
+    Custom Qt Flame Line Edit Widget v2.1
 
-    def __init__(self, text, parent_window, *args, **kwargs):
-        super(FlameLineEdit, self).__init__(*args, **kwargs)
+    Main window should include this: window.setFocusPolicy(QtCore.Qt.StrongFocus)
+
+    text: text show [str]
+    width: (optional) width of widget. default is 150. [int]
+    max_width: (optional) maximum width of widget. default is 2000. [int]
+
+    Usage:
+
+        line_edit = FlameLineEdit('Some text here')
+    '''
+
+    def __init__(self, text, width=150, max_width=2000):
+        super(FlameLineEdit, self).__init__()
 
         self.setText(text)
-        self.setParent(parent_window)
         self.setMinimumHeight(28)
-        self.setMinimumWidth(110)
-        # self.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.setStyleSheet("""
+        self.setMinimumWidth(width)
+        self.setMaximumWidth(max_width)
+        self.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.setStyleSheet('''
             QLineEdit {
-                color: #9a9a9a;
-                background-color: #373e47;
-                selection-color: #262626;
-                selection-background-color: #b8b1a7;
-                font: 14px 'Discreet'}
-            QLineEdit:focus {
-                background-color: #474e58}
+                color: rgb(154, 154, 154);
+                background-color: rgb(55, 65, 75);
+                selection-color: rgb(38, 38, 38);
+                selection-background-color: rgb(184, 177, 167);
+                border: 1px solid rgb(55, 65, 75);
+                padding-left: 5px;
+                font: 14px "Discreet"}
+            QLineEdit:focus {background-color: rgb(73, 86, 99)}
+            QLineEdit:hover {border: 1px solid rgb(90, 90, 90)}
             QLineEdit:disabled {
-                color: #6a6a6a;
-                background-color: #373737}
+                color: rgb(106, 106, 106);
+                background-color: rgb(55, 55, 55);
+                border: 1px solid rgb(55, 55, 55)}
             QToolTip {
-                color: black;
-                background-color: #ffffde;
-                border: black solid 1px}""")
+                color: rgb(170, 170, 170);
+                background-color: rgb(71, 71, 71);
+                border: none}''')
 
 
 class FlameListWidget(QtWidgets.QListWidget):
@@ -345,16 +355,13 @@ class FindFolder:
         self.find_label = FlameLabel('Find')
 
         # Line Edit
-        self.find = FlameLineEdit('', self.window)
-
+        self.find = FlameLineEdit('')
         self.find.textChanged.connect(filter_list)
 
         # List Widget
         self.list_scroll = FlameListWidget(self.window)
-
         self.list_scroll.addItems(self.get_folders())
         self.list_scroll.sortItems()
-
         self.list_scroll.itemDoubleClicked.connect(okay_button)
 
         # Buttons
