@@ -387,6 +387,11 @@ class FindFolder:
 
             self.message('Done!')
 
+        def cancel_button():
+            """Do when cancel button is pressed."""
+            self.window.close()
+            self.message('Cancelled!')
+
         def filter_list():
             """Updates the results list when anything is typed in the Find bar."""
             for num in range(self.list_scroll.count()):
@@ -431,7 +436,7 @@ class FindFolder:
         self.ok_btn = FlameButton('Ok', okay_button, button_color='blue')
         self.ok_btn.setAutoDefault(True)  # doesnt make Enter key work
 
-        self.cancel_btn = FlameButton('Cancel', self.window.close)
+        self.cancel_btn = FlameButton('Cancel', cancel_button)
 
         # Layout
         self.grid = QtWidgets.QGridLayout()
