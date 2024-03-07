@@ -1,9 +1,14 @@
 """
-Find Folder
+Script Name: Find Folder
+Written By: Kieran Hanrahan
 
-URL:
+Script Version: 2.0.0
+Flame Version: 2022
 
-    https://github.com/khanrahan/find-folder
+URL: http://github.com/khanrahan/find-folder
+
+Creation Date: 07.22.22
+Update Date: 03.06.24
 
 Description:
 
