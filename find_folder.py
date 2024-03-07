@@ -28,12 +28,11 @@ from PySide2 import QtWidgets, QtCore
 import flame
 import os
 
-__title__ = "Find Folder"
-__version_info__ = (2, 0, 0)
-__version__ = ".".join([str(num) for num in __version_info__])
-__version_title__ = "{} v{}".format(__title__, __version__)
-
-MESSAGE_PREFIX = "[PYTHON HOOK]"
+TITLE = 'Find Folder'
+VERSION_INFO = (2, 0, 0)
+VERSION = '.'.join([str(num) for num in VERSION_INFO])
+TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
+MESSAGE_PREFIX = '[PYTHON]'
 
 
 class FlameButton(QtWidgets.QPushButton):
@@ -331,9 +330,8 @@ class FindFolder:
 
     def __init__(self, selection):
         """Ensure that only 1 folder is selected by the artist."""
-
-        self.message(__version_title__)
-        self.message("Script called from {}".format(__file__))
+        self.message(TITLE_VERSION)
+        self.message('Script called from {}'.format(__file__))
 
         if len(selection) < 2:
             self.src_path = selection[0].path
@@ -351,9 +349,7 @@ class FindFolder:
     @staticmethod
     def message(string):
         """Print message to shell window and append global MESSAGE_PREFIX."""
-
-        print(" ".join([MESSAGE_PREFIX, string]))
-
+        print(' '.join([MESSAGE_PREFIX, string]))
 
     def get_folders(self):
         """Return all subdirectories in a folder."""
@@ -380,6 +376,8 @@ class FindFolder:
             # introduced in flame 2021.2
             flame.mediahub.files.set_path(self.dest_path)
 
+            self.message('Done!')
+
         def filter_list():
             """Updates the results list when anything is typed in the Find bar."""
             for num in range(self.list_scroll.count()):
@@ -392,7 +390,7 @@ class FindFolder:
 
         self.window.setMinimumSize(600, 600)
         self.window.setStyleSheet('background-color: #272727')
-        self.window.setWindowTitle(__version_title__)
+        self.window.setWindowTitle(TITLE_VERSION)
 
         # FlameLineEdit class needs this
         self.window.setFocusPolicy(QtCore.Qt.StrongFocus)
