@@ -24,7 +24,6 @@ To Install:
     /opt/Autodesk/user/<user name>/python
 """
 
-from __future__ import print_function
 from PySide2 import QtWidgets, QtCore
 import flame
 import os
