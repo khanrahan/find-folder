@@ -35,43 +35,73 @@ __version_title__ = "{} v{}".format(__title__, __version__)
 
 MESSAGE_PREFIX = "[PYTHON HOOK]"
 
-class FlameButton(QtWidgets.QPushButton):
-    """
-    Custom Qt Flame Button Widget
-    To use:
-    button = FlameButton('Button Name', do_when_pressed, window)
-    """
 
-    def __init__(self, button_name, do_when_pressed, parent_window, *args, **kwargs):
-        super(FlameButton, self).__init__(*args, **kwargs)
+class FlameButton(QtWidgets.QPushButton):
+    '''
+    Custom Qt Flame Button Widget v2.1
+
+    button_name: button text [str]
+    connect: execute when clicked [function]
+    button_color: (optional) normal, blue [str]
+    button_width: (optional) default is 150 [int]
+    button_max_width: (optional) default is 150 [int]
+
+    Usage:
+
+        button = FlameButton(
+            'Button Name', do_something__when_pressed, button_color='blue')
+    '''
+
+    def __init__(self, button_name, connect, button_color='normal', button_width=150,
+                 button_max_width=150):
+        super(FlameButton, self).__init__()
 
         self.setText(button_name)
-        self.setParent(parent_window)
-        self.setMinimumSize(QtCore.QSize(110, 28))
-        self.setMaximumSize(QtCore.QSize(110, 28))
+        self.setMinimumSize(QtCore.QSize(button_width, 28))
+        self.setMaximumSize(QtCore.QSize(button_max_width, 28))
         self.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.clicked.connect(do_when_pressed)
-        self.setStyleSheet("""
-            QPushButton {
-                color: #9a9a9a;
-                background-color: #424142;
-                border-top: 1px inset #555555;
-                border-bottom: 1px inset black;
-                font: 14px 'Discreet'}
-            QPushButton:pressed {
-                color: #d9d9d9;
-                background-color: #4f4f4f;
-                border-top: 1px inset #666666;
-                font: italic}
-            QPushButton:disabled {
-                color: #747474;
-                background-color: #353535;
-                border-top: 1px solid #444444;
-                border-bottom: 1px solid #242424}
-            QToolTip {
-                color: black;
-                background-color: #ffffde;
-                border: black solid 1px}""")
+        self.clicked.connect(connect)
+        if button_color == 'normal':
+            self.setStyleSheet('''
+                QPushButton {
+                    color: rgb(154, 154, 154);
+                    background-color: rgb(58, 58, 58);
+                    border: none;
+                    font: 14px "Discreet"}
+                QPushButton:hover {
+                    border: 1px solid rgb(90, 90, 90)}
+                QPushButton:pressed {
+                    color: rgb(159, 159, 159);
+                    background-color: rgb(66, 66, 66);
+                    border: 1px solid rgb(90, 90, 90)}
+                QPushButton:disabled {
+                    color: rgb(116, 116, 116);
+                    background-color: rgb(58, 58, 58);
+                    border: none}
+                QToolTip {
+                    color: rgb(170, 170, 170);
+                    background-color: rgb(71, 71, 71);
+                    border: 10px solid rgb(71, 71, 71)}''')
+        elif button_color == 'blue':
+            self.setStyleSheet('''
+                QPushButton {
+                    color: rgb(190, 190, 190);
+                    background-color: rgb(0, 110, 175);
+                    border: none;
+                    font: 12px "Discreet"}
+                QPushButton:hover {
+                    border: 1px solid rgb(90, 90, 90)}
+                QPushButton:pressed {
+                    color: rgb(159, 159, 159);
+                    border: 1px solid rgb(90, 90, 90)
+                QPushButton:disabled {
+                    color: rgb(116, 116, 116);
+                    background-color: rgb(58, 58, 58);
+                    border: none}
+                QToolTip {
+                    color: rgb(170, 170, 170);
+                    background-color: rgb(71, 71, 71);
+                    border: 10px solid rgb(71, 71, 71)}''')
 
 
 class FlameLabel(QtWidgets.QLabel):
@@ -325,12 +355,10 @@ class FindFolder:
         self.list_scroll.itemDoubleClicked.connect(okay_button)
 
         # Buttons
-        self.ok_btn = FlameButton('Ok', okay_button, self.window)
+        self.ok_btn = FlameButton('Ok', okay_button, button_color='blue')
         self.ok_btn.setAutoDefault(True)  # doesnt make Enter key work
-        self.ok_btn.setStyleSheet('background: #732020')
-        self.ok_btn.setShortcut('Return')
 
-        self.cancel_btn = FlameButton('Cancel', self.window.close, self.window)
+        self.cancel_btn = FlameButton('Cancel', self.window.close)
 
         # Layout
         self.grid = QtWidgets.QGridLayout()
