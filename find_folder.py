@@ -243,14 +243,14 @@ class FindFolder:
         if len(selection) < 2:
             self.src_path = selection[0].path
 
-            self.dest_folder = ""
-            self.dest_path = ""
+            self.dest_folder = ''
+            self.dest_path = ''
 
             self.main_window()
         else:
             msg = FlameMessageBox()
-            msg.setText("Please select only 1 folder.")
-            msg.setWindowTitle("Error")
+            msg.setText('Please select only 1 folder.')
+            msg.setWindowTitle('Error')
             msg.exec_()
 
     @staticmethod
@@ -266,7 +266,7 @@ class FindFolder:
 
         root, dirs, files = next(walker)
 
-        results = [d for d in dirs if d[0] != "."]  # results unsorted
+        results = [d for d in dirs if d[0] != '.']  # results unsorted
 
         return results
 
@@ -308,10 +308,10 @@ class FindFolder:
                 (resolution.height() / 2) - (self.window.frameSize().height() / 2))
 
         # Label
-        self.find_label = FlameLabel("Find", "normal", self.window)
+        self.find_label = FlameLabel('Find', 'normal', self.window)
 
         # Line Edit
-        self.find = FlameLineEdit("", self.window)
+        self.find = FlameLineEdit('', self.window)
 
         self.find.textChanged.connect(filter_list)
 
@@ -328,7 +328,7 @@ class FindFolder:
         self.ok_btn.setStyleSheet('background: #732020')
         self.ok_btn.setShortcut('Return')
 
-        self.cancel_btn = FlameButton("Cancel", self.window.close, self.window)
+        self.cancel_btn = FlameButton('Cancel', self.window.close, self.window)
 
         # Layout
         self.grid = QtWidgets.QGridLayout()
@@ -371,8 +371,8 @@ def scope_folders(selection):
 
 def get_mediahub_files_custom_ui_actions():
     """Python hook to add custom item to right click menu in MediaHub."""
-    return [{'name': "Find...",
-             'actions': [{'name': "Find Folder",
+    return [{'name': 'Find...',
+             'actions': [{'name': 'Find Folder',
                           'isVisible': scope_folders,
                           'execute': FindFolder,
-                          'minimumVersion': "2022"}]}]
+                          'minimumVersion': '2022'}]}]
