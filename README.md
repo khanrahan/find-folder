@@ -4,6 +4,8 @@ Plugin for [Autodesk Flame](http://www.autodesk.com/products/flame)
 
 Filter subdirectories of the current directory in Media Hub Files.  Useful when a directory contains a *LARGE* number of subdirectories.
 
+![screenshot](screenshot.png)
+
 ## Installation
 To make available to all users on the workstation, copy `find-folder.py` to `/opt/Autodesk/shared/python`
 
