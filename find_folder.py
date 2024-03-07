@@ -257,13 +257,6 @@ class FindFolder(object):
             msg.exec_()
 
     @staticmethod
-    def copy_to_clipboard(text):
-        """Self explanitory.  Only takes a string."""
-        qt_app_instance = QtWidgets.QApplication.instance()
-        qt_app_instance.clipboard().setText(text)
-
-
-    @staticmethod
     def message(string):
         """Print message to shell window and append global MESSAGE_PREFIX."""
 
@@ -293,13 +286,8 @@ class FindFolder(object):
             self.dest_folder = self.list_scroll.selectedItems()[0].text()
             self.dest_path = os.path.join(self.src_path, self.dest_folder)
 
-            try:
-                # function below not introduced until flame 2021.2
-                flame.mediahub.files.set_path(self.dest_path)
-                self.message("MediaHub Files path changed to {}".format(self.dest_path))
-            except AttributeError:
-                self.copy_to_clipboard(self.dest_path)
-                self.message("{} sent to clipboard".format(self.dest_path))
+            # introduced in flame 2021.2
+            flame.mediahub.files.set_path(self.dest_path)
 
         def filter_list():
             """
@@ -391,21 +379,9 @@ def scope_folders(selection):
 
 
 def get_mediahub_files_custom_ui_actions():
-    """On Flame 2022.2 and above, this tool will navigate to the selected
-    result.  On Flame 2022.1 and below, it will copy the path to the clipboard
-    instead.  Its the same class but the name is more descriptive and user
-    friendly for 2022.1 and below.  Otherwise an artist might not understand
-    what this does.
-    """
-
+    """Python hook to add custom item to right click menu in MediaHub."""
     return [{'name': "Find...",
              'actions': [{'name': "Find Folder",
                           'isVisible': scope_folders,
                           'execute': FindFolder,
-                          'minimumVersion': "2022.2"},
-                         {'name': "Find Folder and Copy Path to Clipboard",
-                          'isVisible': scope_folders,
-                          'execute': FindFolder,
-                          'minimumVersion': "2020.3.1",
-                          'maximumVersion': "2021.1"}]
-            }]
+                          'minimumVersion': "2022"}]}]
