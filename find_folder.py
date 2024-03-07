@@ -24,9 +24,13 @@ To Install:
     /opt/Autodesk/user/<user name>/python
 """
 
-from PySide2 import QtWidgets, QtCore
-import flame
+
 import os
+from typing import Optional
+
+import flame
+from PySide2 import QtCore, QtWidgets
+
 
 TITLE = 'Find Folder'
 VERSION_INFO = (2, 0, 0)
@@ -410,7 +414,7 @@ class FindFolder:
         self.find.textChanged.connect(filter_list)
 
         # List Widget
-        self.list_scroll = FlameListWidget(self.window)
+        self.list_scroll = FlameListWidget(min_width=500)
         self.list_scroll.addItems(self.get_folders())
         self.list_scroll.sortItems()
         self.list_scroll.itemDoubleClicked.connect(okay_button)
