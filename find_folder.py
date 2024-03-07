@@ -105,51 +105,54 @@ class FlameButton(QtWidgets.QPushButton):
 
 
 class FlameLabel(QtWidgets.QLabel):
-    """
-    Custom Qt Flame Label Widget
-    For different label looks set label_type as: 'normal', 'background', or 'outline'
-    To use:
-    label = FlameLabel('Label Name', 'normal', window)
-    """
+    '''
+    Custom Qt Flame Label Widget v2.1
 
-    def __init__(self, label_name, label_type, parent_window, *args, **kwargs):
-        super(FlameLabel, self).__init__(*args, **kwargs)
+    label_name:  text displayed [str]
+    label_type:  (optional) select from different styles:
+                 normal, underline, background. default is normal [str]
+    label_width: (optional) default is 150 [int]
+
+    Usage:
+
+        label = FlameLabel('Label Name', 'normal', 300)
+    '''
+
+    def __init__(self, label_name, label_type='normal', label_width=150):
+        super(FlameLabel, self).__init__()
 
         self.setText(label_name)
-        self.setParent(parent_window)
-        self.setMinimumSize(110, 28)
+        self.setMinimumSize(label_width, 28)
         self.setMaximumHeight(28)
         self.setFocusPolicy(QtCore.Qt.NoFocus)
 
         # Set label stylesheet based on label_type
 
         if label_type == 'normal':
-            self.setStyleSheet("""
+            self.setStyleSheet('''
                 QLabel {
-                    color: #9a9a9a;
-                    border-bottom: 1px inset #282828;
-                    font: 14px 'Discreet'}
+                    color: rgb(154, 154, 154);
+                    font: 14px "Discreet"}
                 QLabel:disabled {
-                    color: #6a6a6a}""")
+                    color: rgb(106, 106, 106)}''')
+        elif label_type == 'underline':
+            self.setAlignment(QtCore.Qt.AlignCenter)
+            self.setStyleSheet('''
+                QLabel {
+                    color: rgb(154, 154, 154);
+                    border-bottom: 1px inset rgb(40, 40, 40);
+                    font: 14px "Discreet"}
+                QLabel:disabled {
+                    color: rgb(106, 106, 106)}''')
         elif label_type == 'background':
-            self.setAlignment(QtCore.Qt.AlignCenter)
-            self.setStyleSheet("""
+            self.setStyleSheet('''
                 QLabel {
-                    color: #9a9a9a;
-                    background-color: #393939;
-                    font: 14px 'Discreet'}
+                    color: rgb(154, 154, 154);
+                    background-color: rgb(30, 30, 30);
+                    padding-left: 5px;
+                    font: 14px "Discreet"}
                 QLabel:disabled {
-                    color: #6a6a6a}""")
-        elif label_type == 'outline':
-            self.setAlignment(QtCore.Qt.AlignCenter)
-            self.setStyleSheet("""
-                QLabel {
-                    color: #9a9a9a;
-                    background-color: #212121;
-                    border: 1px solid #404040;
-                    font: 14px 'Discreet'}
-                QLabel:disabled {
-                    color: #6a6a6a}""")
+                    color: rgb(106, 106, 106)}''')
 
 
 class FlameLineEdit(QtWidgets.QLineEdit):
@@ -339,7 +342,7 @@ class FindFolder:
                 (resolution.height() / 2) - (self.window.frameSize().height() / 2))
 
         # Label
-        self.find_label = FlameLabel('Find', 'normal', self.window)
+        self.find_label = FlameLabel('Find')
 
         # Line Edit
         self.find = FlameLineEdit('', self.window)
