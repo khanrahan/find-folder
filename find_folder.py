@@ -385,6 +385,7 @@ class FindFolder:
             # introduced in flame 2021.2
             flame.mediahub.files.set_path(self.dest_path)
 
+            self.message(f'MediaHub path changed to {self.dest_path}')
             self.message('Done!')
 
         def cancel_button():
