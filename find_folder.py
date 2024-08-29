@@ -45,7 +45,7 @@ MESSAGE_PREFIX = '[PYTHON]'
 
 
 class FlameButton(QtWidgets.QPushButton):
-    '''
+    """
     Custom Qt Flame Button Widget v2.1
 
     button_name: button text [str]
@@ -58,7 +58,7 @@ class FlameButton(QtWidgets.QPushButton):
 
         button = FlameButton(
             'Button Name', do_something__when_pressed, button_color='blue')
-    '''
+    """
 
     def __init__(self, button_name, connect, button_color='normal', button_width=150,
                  button_max_width=150):
@@ -70,12 +70,12 @@ class FlameButton(QtWidgets.QPushButton):
         self.setFocusPolicy(QtCore.Qt.NoFocus)
         self.clicked.connect(connect)
         if button_color == 'normal':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QPushButton {
                     color: rgb(154, 154, 154);
                     background-color: rgb(58, 58, 58);
                     border: none;
-                    font: 14px "Discreet"}
+                    font: 14px 'Discreet'}
                 QPushButton:hover {
                     border: 1px solid rgb(90, 90, 90)}
                 QPushButton:pressed {
@@ -89,14 +89,14 @@ class FlameButton(QtWidgets.QPushButton):
                 QToolTip {
                     color: rgb(170, 170, 170);
                     background-color: rgb(71, 71, 71);
-                    border: 10px solid rgb(71, 71, 71)}''')
+                    border: 10px solid rgb(71, 71, 71)}""")
         elif button_color == 'blue':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QPushButton {
                     color: rgb(190, 190, 190);
                     background-color: rgb(0, 110, 175);
                     border: none;
-                    font: 12px "Discreet"}
+                    font: 12px 'Discreet'}
                 QPushButton:hover {
                     border: 1px solid rgb(90, 90, 90)}
                 QPushButton:pressed {
@@ -109,11 +109,11 @@ class FlameButton(QtWidgets.QPushButton):
                 QToolTip {
                     color: rgb(170, 170, 170);
                     background-color: rgb(71, 71, 71);
-                    border: 10px solid rgb(71, 71, 71)}''')
+                    border: 10px solid rgb(71, 71, 71)}""")
 
 
 class FlameLabel(QtWidgets.QLabel):
-    '''
+    """
     Custom Qt Flame Label Widget v2.1
 
     label_name:  text displayed [str]
@@ -124,7 +124,7 @@ class FlameLabel(QtWidgets.QLabel):
     Usage:
 
         label = FlameLabel('Label Name', 'normal', 300)
-    '''
+    """
 
     def __init__(self, label_name, label_type='normal', label_width=150):
         super(FlameLabel, self).__init__()
@@ -137,34 +137,34 @@ class FlameLabel(QtWidgets.QLabel):
         # Set label stylesheet based on label_type
 
         if label_type == 'normal':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLabel {
                     color: rgb(154, 154, 154);
-                    font: 14px "Discreet"}
+                    font: 14px 'Discreet'}
                 QLabel:disabled {
-                    color: rgb(106, 106, 106)}''')
+                    color: rgb(106, 106, 106)}""")
         elif label_type == 'underline':
             self.setAlignment(QtCore.Qt.AlignCenter)
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLabel {
                     color: rgb(154, 154, 154);
                     border-bottom: 1px inset rgb(40, 40, 40);
-                    font: 14px "Discreet"}
+                    font: 14px 'Discreet'}
                 QLabel:disabled {
-                    color: rgb(106, 106, 106)}''')
+                    color: rgb(106, 106, 106)}""")
         elif label_type == 'background':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLabel {
                     color: rgb(154, 154, 154);
                     background-color: rgb(30, 30, 30);
                     padding-left: 5px;
-                    font: 14px "Discreet"}
+                    font: 14px 'Discreet'}
                 QLabel:disabled {
-                    color: rgb(106, 106, 106)}''')
+                    color: rgb(106, 106, 106)}""")
 
 
 class FlameLineEdit(QtWidgets.QLineEdit):
-    '''
+    """
     Custom Qt Flame Line Edit Widget v2.1
 
     Main window should include this: window.setFocusPolicy(QtCore.Qt.StrongFocus)
@@ -176,7 +176,7 @@ class FlameLineEdit(QtWidgets.QLineEdit):
     Usage:
 
         line_edit = FlameLineEdit('Some text here')
-    '''
+    """
 
     def __init__(self, text, width=150, max_width=2000):
         super(FlameLineEdit, self).__init__()
@@ -186,7 +186,7 @@ class FlameLineEdit(QtWidgets.QLineEdit):
         self.setMinimumWidth(width)
         self.setMaximumWidth(max_width)
         self.setFocusPolicy(QtCore.Qt.ClickFocus)
-        self.setStyleSheet('''
+        self.setStyleSheet("""
             QLineEdit {
                 color: rgb(154, 154, 154);
                 background-color: rgb(55, 65, 75);
@@ -194,7 +194,7 @@ class FlameLineEdit(QtWidgets.QLineEdit):
                 selection-background-color: rgb(184, 177, 167);
                 border: 1px solid rgb(55, 65, 75);
                 padding-left: 5px;
-                font: 14px "Discreet"}
+                font: 14px 'Discreet'}
             QLineEdit:focus {background-color: rgb(73, 86, 99)}
             QLineEdit:hover {border: 1px solid rgb(90, 90, 90)}
             QLineEdit:disabled {
@@ -204,11 +204,11 @@ class FlameLineEdit(QtWidgets.QLineEdit):
             QToolTip {
                 color: rgb(170, 170, 170);
                 background-color: rgb(71, 71, 71);
-                border: none}''')
+                border: none}""")
 
 
 class FlameListWidget(QtWidgets.QListWidget):
-    '''
+    """
     Custom Qt Flame List Widget
 
     FlameListWidget([min_width=200, max_width=2000, min_height=250, max_height=2000])
@@ -216,7 +216,7 @@ class FlameListWidget(QtWidgets.QListWidget):
     Example:
 
         list_widget = FlameListWidget()
-    '''
+    """
 
     def __init__(
             self, min_width: Optional[int] = 200, max_width: Optional[int] = 2000,
@@ -245,13 +245,13 @@ class FlameListWidget(QtWidgets.QListWidget):
         self.setFocusPolicy(QtCore.Qt.NoFocus)
         self.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.setAlternatingRowColors(True)
-        self.setStyleSheet('''
+        self.setStyleSheet("""
             QListWidget {
                 color: rgb(154, 154, 154);
                 background-color: rgb(30, 30, 30);
                 alternate-background-color: rgb(36, 36, 36);
                 outline: 3px rgb(0, 0, 0);
-                font: 14px "Discreet"}
+                font: 14px 'Discreet'}
             QListWidget::item:selected {
                 color: rgb(217, 217, 217);
                 background-color: rgb(102, 102, 102);
@@ -287,7 +287,7 @@ class FlameListWidget(QtWidgets.QListWidget):
             QToolTip {
                 color: rgb(170, 170, 170);
                 background-color: rgb(71, 71, 71);
-                border: 10px solid rgb(71, 71, 71)}''')
+                border: 10px solid rgb(71, 71, 71)}""")
 
 
 class FlameMessageBox(QtWidgets.QMessageBox):
@@ -313,16 +313,16 @@ class FlameMessageBox(QtWidgets.QMessageBox):
         self.setStyleSheet("""
             MessageBox {
                 background-color: #313131;
-                font: 14px "Discreet"}
+                font: 14px 'Discreet'}
             QLabel {
                 color: #9a9a9a;
-                font: 14px "Discreet"}
+                font: 14px 'Discreet'}
             QPushButton {
                 color: #9a9a9a;
                 background-color: #732020;
                 border-top: 1px inset #555555;
                 border-bottom: 1px inset black;
-                font: 14px "Discreet"}
+                font: 14px 'Discreet'}
             QPushButton:pressed {
                 color: #d9d9d9;
                 background-color: #4f4f4f;
