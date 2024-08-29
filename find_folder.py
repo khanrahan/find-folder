@@ -34,10 +34,10 @@ import os
 from typing import Optional
 
 import flame
-from PySide2 import QtCore, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Find Folder'
-VERSION_INFO = (2, 1, 0)
+VERSION_INFO = (2, 1, 0, 'dev')
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
 TITLE_VERSION = f'{TITLE} v{VERSION}'
 MESSAGE_PREFIX = '[PYTHON]'
@@ -399,7 +399,7 @@ class FindFolder:
         self.window.setFocusPolicy(QtCore.Qt.StrongFocus)
 
         # Center Window
-        resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        resolution = QtGui.QGuiApplication.primaryScreen().screenGeometry()
 
         self.window.move(
                 (resolution.width() / 2) - (self.window.frameSize().width() / 2),
@@ -443,7 +443,7 @@ class FindFolder:
         self.hbox2.addWidget(self.ok_btn)
 
         self.vbox = QtWidgets.QVBoxLayout()
-        self.vbox.setMargin(20)
+        self.vbox.setContentsMargins(20, 20, 20, 20)
         self.vbox.addLayout(self.grid)
         self.vbox.insertSpacing(1, 20)
         self.vbox.addLayout(self.hbox)
@@ -458,7 +458,7 @@ class FindFolder:
 
 def scope_folders(selection):
     """Determine if selection is a folder in the Media Hub > Files tab."""
-    valid_objects = (flame.PyMediaHubFilesFolder)
+    valid_objects = (flame.PyMediaHubFilesFolder,)
 
     return (len(selection) == 1 and isinstance(selection[0], valid_objects))
 
@@ -469,5 +469,5 @@ def get_mediahub_files_custom_ui_actions():
              'actions': [{'name': 'Find Folder',
                           'isVisible': scope_folders,
                           'execute': FindFolder,
-                          'minimumVersion': '2022',
-                          'maximumVersion': '2024.9.9.9'}]}]
+                          'minimumVersion': '2025'}]
+            }]
