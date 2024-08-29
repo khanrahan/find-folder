@@ -44,8 +44,7 @@ MESSAGE_PREFIX = '[PYTHON]'
 
 
 class FlameButton(QtWidgets.QPushButton):
-    """
-    Custom Qt Flame Button Widget v2.1
+    """Custom Qt Flame Button Widget v2.1
 
     button_name: button text [str]
     connect: execute when clicked [function]
@@ -54,7 +53,6 @@ class FlameButton(QtWidgets.QPushButton):
     button_max_width: (optional) default is 150 [int]
 
     Usage:
-
         button = FlameButton(
             'Button Name', do_something__when_pressed, button_color='blue')
     """
@@ -112,8 +110,7 @@ class FlameButton(QtWidgets.QPushButton):
 
 
 class FlameLabel(QtWidgets.QLabel):
-    """
-    Custom Qt Flame Label Widget v2.1
+    """Custom Qt Flame Label Widget v2.1
 
     label_name:  text displayed [str]
     label_type:  (optional) select from different styles:
@@ -121,7 +118,6 @@ class FlameLabel(QtWidgets.QLabel):
     label_width: (optional) default is 150 [int]
 
     Usage:
-
         label = FlameLabel('Label Name', 'normal', 300)
     """
 
@@ -163,8 +159,7 @@ class FlameLabel(QtWidgets.QLabel):
 
 
 class FlameLineEdit(QtWidgets.QLineEdit):
-    """
-    Custom Qt Flame Line Edit Widget v2.1
+    """ Custom Qt Flame Line Edit Widget v2.1
 
     Main window should include this: window.setFocusPolicy(QtCore.Qt.StrongFocus)
 
@@ -173,7 +168,6 @@ class FlameLineEdit(QtWidgets.QLineEdit):
     max_width: (optional) maximum width of widget. default is 2000. [int]
 
     Usage:
-
         line_edit = FlameLineEdit('Some text here')
     """
 
@@ -207,13 +201,11 @@ class FlameLineEdit(QtWidgets.QLineEdit):
 
 
 class FlameListWidget(QtWidgets.QListWidget):
-    """
-    Custom Qt Flame List Widget
+    """Custom Qt Flame List Widget
 
     FlameListWidget([min_width=200, max_width=2000, min_height=250, max_height=2000])
 
     Example:
-
         list_widget = FlameListWidget()
     """
 
@@ -290,13 +282,13 @@ class FlameListWidget(QtWidgets.QListWidget):
 
 
 class FlameMessageBox(QtWidgets.QMessageBox):
-    """
-    Custom Qt Flame Message Box
-    To use:
-    message_box = FlameMessageBox(message)
-    message_box.setText("message for user.")
-    message_box.setWindowTitle("window title")
-    message_box.exec_()
+    """Custom Qt Flame Message Box
+
+    Usage:
+        message_box = FlameMessageBox(message)
+        message_box.setText("message for user.")
+        message_box.setWindowTitle("window title")
+        message_box.exec_()
     """
 
     def __init__(self, *args, **kwargs):
