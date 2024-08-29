@@ -36,7 +36,6 @@ from typing import Optional
 import flame
 from PySide2 import QtCore, QtWidgets
 
-
 TITLE = 'Find Folder'
 VERSION_INFO = (2, 1, 0)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
