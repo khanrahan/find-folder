@@ -219,8 +219,8 @@ class FlameListWidget(QtWidgets.QListWidget):
     '''
 
     def __init__(
-            self, min_width: Optional[int]=200, max_width: Optional[int]=2000,
-            min_height: Optional[int]=250, max_height: Optional[int]=2000):
+            self, min_width: Optional[int] = 200, max_width: Optional[int] = 2000,
+            min_height: Optional[int] = 250, max_height: Optional[int] = 2000):
         super(FlameListWidget, self).__init__()
 
         # Check argument types
