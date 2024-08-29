@@ -59,7 +59,7 @@ class FlameButton(QtWidgets.QPushButton):
 
     def __init__(self, button_name, connect, button_color='normal', button_width=150,
                  button_max_width=150):
-        super(FlameButton, self).__init__()
+        super().__init__()
 
         self.setText(button_name)
         self.setMinimumSize(QtCore.QSize(button_width, 28))
@@ -122,7 +122,7 @@ class FlameLabel(QtWidgets.QLabel):
     """
 
     def __init__(self, label_name, label_type='normal', label_width=150):
-        super(FlameLabel, self).__init__()
+        super().__init__()
 
         self.setText(label_name)
         self.setMinimumSize(label_width, 28)
@@ -172,7 +172,7 @@ class FlameLineEdit(QtWidgets.QLineEdit):
     """
 
     def __init__(self, text, width=150, max_width=2000):
-        super(FlameLineEdit, self).__init__()
+        super().__init__()
 
         self.setText(text)
         self.setMinimumHeight(28)
@@ -212,7 +212,7 @@ class FlameListWidget(QtWidgets.QListWidget):
     def __init__(
             self, min_width: Optional[int] = 200, max_width: Optional[int] = 2000,
             min_height: Optional[int] = 250, max_height: Optional[int] = 2000):
-        super(FlameListWidget, self).__init__()
+        super().__init__()
 
         # Check argument types
 
@@ -292,7 +292,7 @@ class FlameMessageBox(QtWidgets.QMessageBox):
     """
 
     def __init__(self, *args, **kwargs):
-        super(FlameMessageBox, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # the below has now effect.  should be subclassing QDialog instead.
         self.setMinimumSize(400, 270)
