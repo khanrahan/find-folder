@@ -2,13 +2,13 @@
 Script Name: Find Folder
 Written By: Kieran Hanrahan
 
-Script Version: 2.1.0
-Flame Version: 2022
+Script Version: 3.0.0
+Flame Version: 2025
 
 URL: http://github.com/khanrahan/find-folder
 
 Creation Date: 07.22.22
-Update Date: 03.07.24
+Update Date: 09.05.24
 
 Description:
 
@@ -37,7 +37,7 @@ import flame
 from PySide6 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Find Folder'
-VERSION_INFO = (2, 1, 0, 'dev')
+VERSION_INFO = (3, 0, 0)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
 TITLE_VERSION = f'{TITLE} v{VERSION}'
 MESSAGE_PREFIX = '[PYTHON]'
