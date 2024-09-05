@@ -248,24 +248,15 @@ class FlameListWidget(QtWidgets.QListWidget):
                 background-color: rgb(102, 102, 102);
                 border: 1px solid rgb(102, 102, 102)}
             QScrollBar {
-                background: rgb(61, 61, 61)}
-            QScrollBar::handle {
                 background: rgb(31, 31, 31)}
-            QScrollBar::add-line:vertical {
-                border: none;
-                background: none;
-                width: 0px;
-                height: 0px}
-            QScrollBar::sub-line:vertical {
-                border: none;
-                background: none;
-                width: 0px;
-                height: 0px}
-            QScrollBar {
-                background: rgb(61, 61, 61)}
             QScrollBar::handle {
-                background: rgb(31, 31, 31)}
+                background: rgb(61, 61, 61)}
             QScrollBar::add-line:horizontal {
+                border: none;
+                background: none;
+                width: 0px;
+                height: 0px}
+            QScrollBar::add-line:vertical {
                 border: none;
                 background: none;
                 width: 0px;
@@ -275,6 +266,13 @@ class FlameListWidget(QtWidgets.QListWidget):
                 background: none;
                 width: 0px;
                 height: 0px}
+            QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+                width: 0px;
+                height: 0px}
+            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                background: none}
             QToolTip {
                 color: rgb(170, 170, 170);
                 background-color: rgb(71, 71, 71);
